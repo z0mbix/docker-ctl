@@ -81,6 +81,17 @@ cmd-show-running() {
   docker ps
 }
 
+cmd-stop-running() {
+  declare desc="Stops all running containers"
+
+  echo "Stopping all running containers..."
+  local containers=$(docker ps -q)
+  for container in ${containers[@]}; do
+    echo "Stopping container: $container"
+    stop-container $container
+  done
+}
+
 cmd-show-stopped() {
   declare desc="Shows all stopped containers"
 
@@ -139,8 +150,10 @@ main() {
   if type cmd-$cmd &> /dev/null; then
     cmd-$cmd $@
   else
-    echo "No such command: $cmd"
-    echo
+    if [[ -n $cmd ]]; then
+      echo "No such command: $cmd"
+      echo
+    fi
     echo "Available commands:"
     list-cmds | sed "s/^/  /"
     echo

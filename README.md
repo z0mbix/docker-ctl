@@ -6,8 +6,6 @@ Like Docker, but have a terrible memory, or a little bit lazy? Then you may need
 To see all commands just run docker-ctl with no arguments:
 
     # docker-ctl
-    No such command:
-    
     Available commands:
       cleanup
       help
@@ -17,6 +15,7 @@ To see all commands just run docker-ctl with no arguments:
       show-ports
       show-running
       show-stopped
+      stop-running
 
 To see more details use the help option:
 
@@ -45,6 +44,9 @@ To see more details use the help option:
     
     show-stopped
       Shows all stopped containers
+    
+    stop-running
+      Stops all running containers
 
 To see full help details for a command use **docker-ctl help [command]** e.g.:
 
