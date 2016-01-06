@@ -22,8 +22,6 @@ remove-image() {
 }
 
 cleanup-containers() {
-  declare desc="Removes exited containers and dangling images"
-
   local containers=$(docker ps --filter status=exited -q)
   for container in ${containers[@]}; do
     echo "Removing container: $container"
@@ -32,8 +30,6 @@ cleanup-containers() {
 }
 
 cleanup-images() {
-  declare desc="Removes exited containers and dangling images"
-
   local images=$(docker images --filter dangling=true -q)
   for image in ${images[@]}; do
     echo "Removing dangling image: $image"
