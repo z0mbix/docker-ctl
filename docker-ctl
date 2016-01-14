@@ -91,7 +91,7 @@ cmd-stop-running() {
 cmd-show-stopped() {
   declare desc="Shows all stopped containers"
 
-  echo "Showing all running containers..."
+  echo "Showing all stopped containers..."
   docker ps --filter status=exited -q
 }
 
